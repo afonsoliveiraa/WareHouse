@@ -20,7 +20,11 @@
     </div>
 
     <div class="col-md-3">
-        <p class="text-secondary">STATUS</p>
+      <% if entry.entry_items.sum('quantity * unit_price') == entry.total %>
+          <p class="text-success ">• Finalizada</p>
+      <% else %>
+          <p class="text-danger ">• Aberta</p>
+      <% end %>
     </div>
 
     <!-- Quarta coluna: Dropdown -->

@@ -64,7 +64,7 @@ class EntryItemsController < ApplicationController
         format.html { redirect_to entry_path(entry_item_params[:entry_id]) }
         format.turbo_stream { render turbo_stream: turbo_stream.replace("notice", partial: "layouts/flash") }
       end
-    elsif total_entry(@entry_item.entry.id) >= @entry.total
+    elsif total_entry(@entry_item.entry.id) == @entry.total
       respond_to do |format|
         flash.now[:notice] = "A nota precisa estar pendente"
         format.html { redirect_to entry_path(entry_item_params[:entry_id]) }

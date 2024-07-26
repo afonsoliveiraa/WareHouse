@@ -39,15 +39,23 @@ class EntriesController < ApplicationController
 
   # PATCH/PUT /entries/1 or /entries/1.json
   def update
-    respond_to do |format|
-      if @entry.update(entry_params)
-        flash.now[:notice] = "Entry was successfully updated."
-        format.html { redirect_to entry_url(@entry) }
-        format.json { render :show, status: :ok, location: @entry }
-        format.turbo_stream
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
+    if  @entry.entry_items.sum('quantity * unit_price') < @entry.total
+      respond_to do |format|
+        if @entry.update(entry_params)
+          flash.now[:notice] = "Entry was successfully updated."
+          format.html { redirect_to entry_url(@entry) }
+          format.json { render :show, status: :ok, location: @entry }
+          format.turbo_stream
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @entry.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        flash.now[:notice] = "A nota precisa estar pendente"
+        format.html { redirect_to entry_path(entry_item_params[:entry_id]) }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("notice", partial: "layouts/flash") }
       end
     end
   end

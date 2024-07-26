@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  description: MyString
+  objective: MyString
+  start_date: 2024-07-16
+  end_date: 2024-07-16
+  uo: one
+  horizon: MyString
+
+two:
+  code: MyString
+  description: MyString
+  objective: MyString
+  start_date: 2024-07-16
+  end_date: 2024-07-16
+  uo: two
+  horizon: MyString

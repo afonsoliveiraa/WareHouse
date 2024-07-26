@@ -1,0 +1,11 @@
+<main>
+  <%= link_to "Back", units_path %>
+
+  <div class="header">
+    <h1>New unit</h1>
+  </div>
+
+  <%= turbo_frame_tag @unit do %>
+    <%= render "form", unit: @unit %>
+  <% end %>
+</main>

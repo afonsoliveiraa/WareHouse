@@ -1,0 +1,11 @@
+<main>
+  <%= link_to "Back", pas_path %>
+
+  <div class="header">
+    <h1>New pa</h1>
+  </div>
+
+  <%= turbo_frame_tag @pa do %>
+    <%= render "form", pa: @pa %>
+  <% end %>
+</main>

@@ -1,0 +1,9 @@
+<main>
+  <div class="header">
+    <h1>New entry_item</h1>
+  </div>
+
+  <%= turbo_frame_tag @entry_item do %>
+    <%= render "form", entry_item: @entry_item %>
+  <% end %>
+</main>

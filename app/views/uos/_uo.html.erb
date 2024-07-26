@@ -1,0 +1,34 @@
+<%= turbo_frame_tag uo do %>
+    <div class="d-flex mt-3">
+        <div>
+            <p class="">ID <%= uo.id.to_s.rjust(2, '0') %></p>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between ms-5 flex-grow-1">
+            <div>
+                <p class="mb-0"><%= uo.description %></p>
+                <p class="text-secondary small"><%= uo.abbreviation %></p>
+            </div>
+
+            <div class="ms-auto">
+                <div class="dropdown">
+                    <button class="btn btn-sm text-uppercase" type="button" id="dropdownMenuButton<%= uo.id %>" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<%= uo.id %>">
+                        <li>
+                            <%= button_to uo_path(uo), method: :delete, data: { turbo_frame: "_top" }, class: "dropdown-item" do %>
+                                Delete
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to "Edit", edit_uo_path(uo), class: "dropdown-item" %>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+        </div>
+    </div>
+<% end %>

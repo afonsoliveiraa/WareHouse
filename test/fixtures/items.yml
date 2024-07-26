@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  group: one
+  unit: one
+  specification: MyText
+
+two:
+  description: MyString
+  group: two
+  unit: two
+  specification: MyText

@@ -1,0 +1,9 @@
+<main>
+  <div class="header">
+    <%= link_to "Back to units", units_path %>
+  </div>
+
+  <%= turbo_frame_tag @unit do %>
+    <%= render "form", unit: @unit %>
+  <% end %>
+</main>

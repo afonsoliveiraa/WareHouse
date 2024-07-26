@@ -1,0 +1,23 @@
+<%= turbo_stream_from "uos" %>
+
+<main>
+  
+  <div class="header mb-5">
+    <p class="fs-2">Unidade Orçamentária</p>
+    <%= link_to "New Unidade", new_uo_path, data: { turbo_frame: dom_id(Uo.new) } %>
+  </div>
+ 
+  <div class="row">
+    <div class="col-md-9 mx-auto ">
+      
+      <%= turbo_frame_tag Uo.new %>
+      <%= turbo_frame_tag "uos" do %>
+        <%= render @uos %>
+      <% end %>
+
+    </div>
+  </div>
+
+  
+</main>
+

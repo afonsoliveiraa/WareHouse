@@ -1,0 +1,9 @@
+<main>
+  <div class="header">
+    <%= link_to "Back to groups", groups_path %>
+  </div>
+
+  <%= turbo_frame_tag @group do %>
+    <%= render "form", group: @group %>
+  <% end %>
+</main>

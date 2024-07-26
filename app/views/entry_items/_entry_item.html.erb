@@ -1,0 +1,44 @@
+<%= turbo_frame_tag entry_item do %>
+  <div class="row mt-3 ">
+    <div class="col-md-1">
+      <p class="">ID <%= entry_item.item.id.to_s.rjust(2, '0') %></p>
+    </div>
+
+    <div class="col-md-4">
+      <p class=""><%= entry_item.item.description %></p>
+    </div>
+
+    <div class="col-md-1">
+      <p class="text-secondary"><%= entry_item.item.unit.abbreviation %></p>
+    </div>
+
+
+    <div class="col-md-2">
+      <p class="text-secondary">Quant. <%= entry_item.quantity %></p>
+    </div>
+
+    <div class="col-md-3">
+      <p class="text-secondary">Valor Unit. R$ <%= entry_item.unit_price %></p>
+    </div>
+
+    <div class="col-md-1 text-end">
+      <div class="dropdown">
+        <button class="btn btn-sm text-uppercase" type="button" id="dropdownMenuButton<%= entry_item.id %>" data-bs-toggle="dropdown" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<%= entry_item.id %>">
+          <li>
+            <%= button_to entry_entry_item_path(@entry, entry_item), method: :delete, data: { turbo_frame: "_top" }, class: "dropdown-item" do %>
+              Delete
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "Edit", edit_entry_entry_item_path(@entry, entry_item), class: "dropdown-item" %>
+          </li>
+        </ul>
+      </div>  
+    </div>
+  </div>
+<% end %>

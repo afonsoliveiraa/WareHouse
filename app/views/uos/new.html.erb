@@ -1,0 +1,11 @@
+<main>
+  <%= link_to "Back", uos_path %>
+
+  <div class="header">
+    <h1>New uo</h1>
+  </div>
+
+  <%= turbo_frame_tag @uo do %>
+    <%= render "form", uo: @uo %>
+  <% end %>
+</main>

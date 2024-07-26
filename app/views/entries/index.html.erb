@@ -1,0 +1,23 @@
+<%= turbo_stream_from "entries" %>
+
+<main>
+  
+  <div class="header mb-5">
+    <p class="fs-2">Entradas</p>
+    <%= link_to "New Entrada", new_entry_path, data: { turbo_frame: dom_id(Entry.new) } %>
+  </div>
+ 
+  <div class="row">
+    <div class="col-md-9 mx-auto ">
+      
+      <%= turbo_frame_tag Entry.new %>
+      <%= turbo_frame_tag "entries" do %>
+        <%= render @entries %>
+      <% end %>
+
+    </div>
+  </div>
+
+  
+</main>
+

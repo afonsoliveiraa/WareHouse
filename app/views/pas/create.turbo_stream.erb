@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "pas", partial: "pas/pa", locals: { pa: @pa } %>
+<%= turbo_stream.replace "notice", partial: "layouts/flash" %>
+<%= turbo_stream.update Pa.new, "" %>

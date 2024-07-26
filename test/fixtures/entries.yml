@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_entry: 2024-07-25
+  number: MyString
+  pa: one
+  person: one
+  total: 9.99
+  modality: MyString
+
+two:
+  date_entry: 2024-07-25
+  number: MyString
+  pa: two
+  person: two
+  total: 9.99
+  modality: MyString

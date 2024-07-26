@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "units", partial: "units/unit", locals: { unit: @unit } %>
+<%= turbo_stream.replace "notice", partial: "layouts/flash" %>
+<%= turbo_stream.update Unit.new, "" %>

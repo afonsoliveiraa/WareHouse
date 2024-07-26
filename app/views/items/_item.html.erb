@@ -1,34 +1,43 @@
 <%= turbo_frame_tag item do %>
-    <div class="d-flex mt-3">
-        <div>
-            <p class="">ID <%= item.id.to_s.rjust(2, '0') %></p>
-        </div>
-
-        <div class="d-flex align-items-center justify-content-between ms-5 flex-grow-1">
-            <div>
-                <p class="mb-0"><%= item.description %></p>
-                <p class="text-secondary small"><%= item.unit.description %></p>
-            </div>
-
-            <div class="ms-auto">
-                <div class="dropdown">
-                    <button class="btn btn-sm text-uppercase" type="button" id="dropdownMenuButton<%= item.id %>" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-                        </svg>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<%= item.id %>">
-                        <li>
-                            <%= button_to item_path(item), method: :delete, data: { turbo_frame: "_top" }, class: "dropdown-item" do %>
-                                Delete
-                            <% end %>
-                        </li>
-                        <li>
-                            <%= link_to "Edit", edit_item_path(item), class: "dropdown-item" %>
-                        </li>
-                    </ul>
-                </div>  
-            </div>
-        </div>
+  <div class="row mt-1">
+    <!-- Primeira coluna: ID -->
+    <div class="col-md-1">
+      <p>ID <%= item.id.to_s.rjust(2, '0') %></p>
     </div>
+
+    <!-- Segunda coluna: Description -->
+    <div class="col-md-5">
+        <p><%= item.description %></p>
+    </div>
+
+    <!-- Terceira coluna: Placeholder para outra informação, se necessário -->
+    <div class="col-md-2">
+        <p class="text-secondary"><%= item.unit.description %></p>
+    </div>
+
+    <div class="col-md-3">
+        <p class="text-secondary"><%= item.group.description %></p>
+    </div>
+
+    <!-- Quarta coluna: Dropdown -->
+    <div class="col-md-1">
+      <div class="dropdown">
+        <button class="btn btn-sm text-uppercase" type="button" id="dropdownMenuButton<%= item.id %>" data-bs-toggle="dropdown" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<%= item.id %>">
+          <li>
+            <%= button_to item_path(item), method: :delete, data: { turbo_frame: "_top" }, class: "dropdown-item" do %>
+              Delete
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "Edit", edit_item_path(item), class: "dropdown-item" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 <% end %>

@@ -21,6 +21,9 @@
 
     <div class="col-md-4 ps-5">
       <p class="border-bottom fs-5">TOTAL dos items</p>
+      <%= turbo_frame_tag "status" do %>
+        <%= render "entries/status" %>
+      <% end %>
     </div>
   </div>
 </main>

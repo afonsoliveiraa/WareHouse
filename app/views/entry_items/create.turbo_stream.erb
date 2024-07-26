@@ -1,3 +1,4 @@
 <%= turbo_stream.prepend "entry_items", partial: "entry_items/entry_item", locals: { entry_item: @entry_item } %>
+<%= turbo_stream.replace "status", partial: "entries/status", locals: { entry: @entry } %>
 <%= turbo_stream.replace "notice", partial: "layouts/flash" %>
 <%= turbo_stream.update EntryItem.new, "" %>

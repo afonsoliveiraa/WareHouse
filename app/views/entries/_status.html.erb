@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "status" do %>
+<% completo = @entry.entry_items.sum('quantity * unit_price') %>
+
+<div class="row ">
+    
+    <% if completo == @entry.total %>
+        <p>Esses itens constam efetivamente no seu saldo possibilitando assim a saída.</p>
+        <p class="text-success fs-5">FINALIZADA</p>
+    <% else %>
+        <p>A nota só será finalizada quando a soma total dos itens for igual ao total da nota.</p>
+        <p class="text-danger fs-5">ABERTA</p>
+    <% end %>
+
+    <p class="">Valor da soma dos itens inseridos: R$ <%= completo %></p>
+    <p class="">Quantidade de itens inseridos na nota atual: <%= @entry.entry_items.count %></p>
+
+</div>
+
+<% end %>
+

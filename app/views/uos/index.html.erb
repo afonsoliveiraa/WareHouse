@@ -2,13 +2,12 @@
 
 <main>
   
-  <div class="header mb-5">
-    <p class="fs-2">Unidade Orçamentária</p>
-    <%= link_to "New Unidade", new_uo_path, data: { turbo_frame: dom_id(Uo.new) } %>
-  </div>
- 
   <div class="row">
-    <div class="col-md-12 mx-auto ">
+    <div class="col-md-6 mx-auto shadow-sm">
+
+      <div class="header p-3">
+        <%= link_to "New Unidade Orçamentária", new_uo_path, data: { turbo_frame: dom_id(Uo.new) } %>
+      </div>
       
       <%= turbo_frame_tag Uo.new %>
       <%= turbo_frame_tag "uos" do %>
@@ -17,7 +16,6 @@
 
     </div>
   </div>
-
   
 </main>
 

@@ -1,22 +1,19 @@
 <%= turbo_stream_from "units" %>
 
 <main>
-
-  <div class="header mb-5">
-    <p class="fs-2">Unidades</p>
-    <%= link_to "New Unidade", new_unit_path, data: { turbo_frame: dom_id(Unit.new) } %>
-  </div>
-
   
-
   <div class="row">
-    <div class="col-md-12 mx-auto">
+    <div class="col-md-6 mx-auto shadow-sm">
 
+      <div class="header p-3">
+        <%= link_to "New Unidade de medida", new_unit_path, data: { turbo_frame: dom_id(Unit.new) } %>
+      </div>
+      
       <%= turbo_frame_tag Unit.new %>
       <%= turbo_frame_tag "units" do %>
         <%= render @units %>
       <% end %>
-      
+
     </div>
   </div>
   

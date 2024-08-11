@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
-  <div class="container-fluid px-5">
-    <a class="navbar-brand" href="#">AO | + 85 9881-6975</a>
+  <div class="container-fluid px-0 text-uppercase">
+    <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,22 +27,13 @@
         <li class="nav-item">
           <a class="nav-link active" href="<%= items_path %>">Items de Despesa</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="<%= entries_path %>">Entradas</a>
-        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+          <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Movimentações
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="nav-link active" href="<%= entries_path %>">Entradas</a></li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-disabled="true">Disabled</a>
         </li>
       </ul>
     </div>

@@ -1,26 +1,33 @@
 <main >
-  <%= link_to "← Back to entries", entries_path %>
-  <p class="fs-2 mt-5">Número <%= @entry.number %></p>
 
-  <div class="row mt-5">
-    <div class="col-md-8 border-end pe-5">
-      <div class="header mb-5">
-        <p>Lista de todos os Itens</p>
-        <%= link_to "New Item", new_entry_entry_item_path(@entry), data: { turbo_frame: dom_id(EntryItem.new) } %>
+
+  <div class="row mt-3 justify-content-center">
+    <div class="col-md-6 me-3">
+
+      <div class="p-3 mb-4  shadow-sm">
+        <%= link_to "← Back to entries", entries_path %>
+        <p class="fs-5 mt-3">Número <%= @entry.number %></p>
       </div>
 
-      <%= turbo_stream_from "entry_items" %>
 
-        <%= turbo_frame_tag EntryItem.new %>
-      
-      
-        <%= turbo_frame_tag "entry_items" do %>
-          <%= render @entry_items %>
-        <% end %>
+      <div class="shadow-sm ">
+
+        <div class="header px-4 py-3">
+          <%= link_to "New Item", new_entry_entry_item_path(@entry), data: { turbo_frame: dom_id(EntryItem.new) } %>
+        </div>
+
+        <%= turbo_stream_from "entry_items" %>
+
+          <%= turbo_frame_tag EntryItem.new %>
+        
+        
+          <%= turbo_frame_tag "entry_items" do %>
+            <%= render @entry_items %>
+          <% end %>
+      </div>
     </div>
 
-    <div class="col-md-4 ps-5">
-      <p class="border-bottom fs-5">TOTAL dos items</p>
+    <div class="col-md-3 shadow-sm p-3">
       <%= turbo_frame_tag "status" do %>
         <%= render "entries/status" %>
       <% end %>

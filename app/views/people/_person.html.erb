@@ -1,44 +1,35 @@
 <%= turbo_frame_tag person do %>
-  <div class="row mt-1">
-    <!-- Primeira coluna: ID -->
-    <div class="col-md-1">
-      <p>ID <%= person.id.to_s.rjust(2, '0') %></p>
-    </div>
+  <div class="person p-3" id="<%= dom_id person %>">
+    <div class="d-flex justify-content-between">
 
-    <!-- Segunda coluna: Nome -->
-    <div class="col-md-5">
-        <p><%= person.name %></p>
-    </div>
-
-    <!-- Terceira coluna: Placeholder para outra informação, se necessário -->
-    <div class="col-md-2">
-       <p class="text-secondary "><%= person.document %></p>
-    </div>
-
-    <!-- Quarta coluna: Placeholder para outra informação, se necessário -->
-    <div class="col-md-3">
-       <p class="text-secondary "><%= person.email %></p>
-    </div>
-
-    <!-- Quarta coluna: Dropdown -->
-    <div class="col-md-1">
-      <div class="dropdown">
-        <button class="btn btn-sm text-uppercase" type="button" id="dropdownMenuButton<%= person.id %>" data-bs-toggle="dropdown" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
-          </svg>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<%= person.id %>">
-          <li>
-            <%= button_to person_path(person), method: :delete, data: { turbo_frame: "_top" }, class: "dropdown-item" do %>
-              Delete
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "Edit", edit_person_path(person), class: "dropdown-item" %>
-          </li>
-        </ul>
+      <div class="d-flex align-items-baseline">
+        <p class="fs-6 mb-0 me-3"><%= person.id %></p>
+        <div class="ms-3">
+          <p class="fs-6 mb-0"><%= person.name %></p>
+          <p class="mb-0 text-secondary small text-uppercase">Documento <%= person.document %></p>
+        </div>
       </div>
+
+      <div class="d-flex align-items-start">
+        <div class="dropdown">
+          <button class="btn btn-sm text-uppercase" type="button" id="dropdownMenuButton<%= person.id %>" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<%= person.id %>">
+            <li>
+              <%= button_to person_path(person), method: :delete, data: { turbo_frame: "_top" }, class: "dropdown-item" do %>
+                Delete
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "Edit", edit_person_path(person), class: "dropdown-item" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
     </div>
   </div>
 <% end %>

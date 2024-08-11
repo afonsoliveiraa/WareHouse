@@ -6,7 +6,7 @@
         <p class="fs-6 mb-0 me-3"><%= entry_item.item.id %></p>
         <div class="ms-3">
           <p class="fs-6 mb-0"><%= entry_item.item.description %></p>
-          <p class="mb-0 text-secondary small text-uppercase">QTDA <%= entry_item.quantity %> * R$ <%= entry_item.unit_price %> <%= entry_item.item.unit.description %> = TOTAL R$ <%= entry_item.quantity * entry_item.unit_price %></p>
+          <p class="mb-0 text-secondary small text-uppercase">QTDA <%= entry_item.quantity %> * R$ <%= entry_item.unit_price %> por <%= entry_item.item.unit.description %> = TOTAL R$ <%= entry_item.quantity * entry_item.unit_price %></p>
         </div>
       </div>
 

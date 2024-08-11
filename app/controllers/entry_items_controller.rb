@@ -58,15 +58,16 @@ class EntryItemsController < ApplicationController
     @entry_item = EntryItem.find(params[:id])
     valor_item = entry_item_params[:quantity].to_f * entry_item_params[:unit_price].to_f
   
-    if valor_item + (total_entry(@entry_item.entry.id) - (@entry_item.quantity * @entry_item.unit_price)) > @entry.total
+
+    if total_entry(@entry_item.entry.id) == @entry.total
       respond_to do |format|
-        flash.now[:notice] = "Valor do item superior ao total da nota"
+        flash.now[:notice] = "A nota precisa estar pendente"
         format.html { redirect_to entry_path(entry_item_params[:entry_id]) }
         format.turbo_stream { render turbo_stream: turbo_stream.replace("notice", partial: "layouts/flash") }
       end
-    elsif total_entry(@entry_item.entry.id) == @entry.total
+    elsif valor_item + (total_entry(@entry_item.entry.id) - (@entry_item.quantity * @entry_item.unit_price)) > @entry.total
       respond_to do |format|
-        flash.now[:notice] = "A nota precisa estar pendente"
+        flash.now[:notice] = "Valor do item superior ao total da nota"
         format.html { redirect_to entry_path(entry_item_params[:entry_id]) }
         format.turbo_stream { render turbo_stream: turbo_stream.replace("notice", partial: "layouts/flash") }
       end
